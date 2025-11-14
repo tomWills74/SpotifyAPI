@@ -1,0 +1,141 @@
+#recently-played,
+#top-tracks,
+#top-artists,
+#genre-chart {
+    display: none;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1DB954;
+}
+
+.section {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+h3 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #1DB954;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+/* li:last-child {
+    border-bottom: none;
+} */
+
+.track-name {
+    font-weight: bold;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.album-cover {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.track-details {
+    flex: 1;
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: #fff;
+}
+
+.meta {
+    font-size: 0.85em;
+    color: #b3b3b3;
+}
+
+.chart-section {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#genreChart {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#navbar {
+    background-color: #1DB954;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li a {
+    color: #121212;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-list li a:hover {
+    color: #ffffff;
+}
+/* .nav-list li a.active {
+    text-decoration: underline;
+} */
+
+.nav-list li a,
+.nav-list li a:link,
+.nav-list li a:visited,
+.nav-list li a:hover,
+.nav-list li a:active {
+    text-decoration: none;
+    color: #121212;
+    font-weight: bold;
+    outline: none;
+}

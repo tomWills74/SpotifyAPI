@@ -1,0 +1,82 @@
+<!--temapltes/index.html-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Spotify Dashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <h1>Welcome to the Spotify Dashboard</h1>
+        <!-- nav bar -->
+         <nav id="navbar"></nav>
+         <div id="content"></div>
+         <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+        <!-- nav bar -->
+
+        <div id="home" class="section">
+            <h3>Home</h3>
+            <p>Welcome <B>{{ display_name }}</B> to your Spotify Dashboard. Use the navigation bar to explore your stats.</p>
+        </div>
+
+        <div id="recently-played" class="section">
+            <h3>Recently Played</h3>
+            <ul>
+                {% for track in tracks %}
+                    <li class="track-item">
+                        <img src="{{track.url}}" alt="Album Cover" class="album-cover">
+                        <div class="track-details">
+                            <span class="track-name">{{ track.name }}</span> by {{ track.artists }}<br>
+                            <span class="meta"> Played at {{ track.played_at }}</span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="top-tracks" class="section">
+            <h3>Top Tracks</h3>
+            <ul>
+                {% for track in top_tracks %}
+                    <li class="track-item">
+                        <img src="{{track.url}}" alt="Album Cover" class="album-cover">
+                        <div class="track-details">
+                            <span class="track-name">{{ track.name }}</span> by {{ track.artists }}<br>
+                            <span class="meta"> Popularity: {{ track.popularity }}</span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="top-artists" class="section">
+            <h3>Top Artists</h3>
+            <ul>
+                {% for artist in top_artists %}
+                    <li class="track-item">
+                        <img src="{{artist.url}}" alt="Album Cover" class="album-cover">
+                        <div class="track-details">
+                            <span class="track-name">{{ artist.name }}</span><br>
+                            <span class="meta"> Genre: {{ artist.genres }} | Followers: {{ artist.followers }} |  Popularity: {{ artist.popularity }}</span><br>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- graphs TO BE MOVED -->
+        <div id="genre-chart" class="chart-section">
+            <h3>Genre Distribution</h3> 
+            <canvas id="genreChart"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+        <script>
+            const genreData = {{ genre_data | tojson | safe }};
+        </script>
+
+        <script src="{{ url_for('static', filename='js/graphs.js') }}"></script>
+        <!-- graphs TO BE MOVED -->
+    </body>
+</html>
