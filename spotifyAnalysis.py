@@ -17,23 +17,27 @@ def get_spotify_client():
     return sp, sp.auth_manager.get_access_token(as_dict=False)
 
 
-def recently_played_tracks(sp):
-    recent = sp.current_user_recently_played(limit=10)
+def recently_played_tracks(sp, limit=10):
+    recent = sp.current_user_recently_played(limit=limit)
     tracks = []
     for item in recent['items']:
         track = item['track']
         played_at = item['played_at']
         url = track['album']['images'][2]['url']if track['album']['images'] else None
+        artist_id = track['artists'][0]['id']
+        artist_info = sp.artist(artist_id)
+        genre = artist_info['genres'][0] if artist_info['genres'] else 'Unknown'
         tracks.append({
             'name': track['name'],
             'artists': ', '.join([artist['name'] for artist in track['artists']]),
             'album': track['album']['name'],
             'played_at': played_at,
+            'genre': genre,
             'url': url
         })
     return tracks
 
-def top_tracks(sp, time_range='short_term', limit=10):
+def top_tracks(sp, time_range='long_term', limit=10):
     top = sp.current_user_top_tracks(time_range=time_range, limit=limit)
     tracks = []
     for item in top['items']:
@@ -44,7 +48,7 @@ def top_tracks(sp, time_range='short_term', limit=10):
             'artists': ', '.join([artist['name'] for artist in item['artists']]),
             'album': item['album']['name'],
             'popularity': item['popularity'],
-            'url': url
+            'url': url,
         })
     return tracks
 

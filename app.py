@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session, url_for
 from spotipy.oauth2 import SpotifyOAuth
 import os
 from dotenv import load_dotenv
+load_dotenv()
 from spotifyAnalysis import (
     recently_played_tracks, 
     top_tracks, top_artists, 
@@ -10,7 +11,7 @@ from spotifyAnalysis import (
     get_spotify_client
     )
 
-load_dotenv()
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 @app.route("/callback")
