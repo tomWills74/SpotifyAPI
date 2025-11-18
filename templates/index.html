@@ -7,18 +7,36 @@
     </head>
 
     <body>
-        <h1>Welcome to the Spotify Dashboard</h1>
+        <div class="hero">
+            <h1>Welcome to the Spotify Dashboard</h1>
+        </div>
         <!-- nav bar -->
          <nav id="navbar"></nav>
          <div id="content"></div>
          <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
         <!-- nav bar -->
+        <div id="home">
+            <div class="user-greeting">
+                <img src="{{ profile_image_url }}" alt="user-avatar" class="user-avatar">
+                <p>Welcome <B>{{ display_name }}</B> to your Spotify Dashboard</p>
+            </div>
 
-        <div id="home" class="section">
-            <h3>Home</h3>
-            <p>Welcome <B>{{ display_name }}</B> to your Spotify Dashboard. Use the navigation bar to explore your stats.</p>
+            <div class="summary">
+                <div class="stat">Total Tracks Played: {{ total_tracks }}</div>
+                <div class="stat">Top Genre: {{ top_genre }}</div>
+                <div class="stat">Peak Listening Hour: {{ peak_hour }}</div>
+            </div>
+
+            <div class="featured">
+                <h3>Featured Artist</h3>
+                <img src="{{ top_artist_url}}" alt="artist image">
+                <p>{{ top_artist_name }} - {{ top_artist_genre }}</p>
+            </div>
+            <div class="fun-info">
+                <p>You listened to {{ listen_time }} of {{ listen_time_genre }} (insert time frame)</p>
+                <p>You'r most active day is {{ most_active_day }}</p>
+            </div>
         </div>
-
         <div id="recently-played" class="section">
             <h3>Recently Played</h3>
             <ul>
@@ -57,7 +75,7 @@
                         <img src="{{artist.url}}" alt="Album Cover" class="album-cover">
                         <div class="track-details">
                             <span class="track-name">{{ artist.name }}</span><br>
-                            <span class="meta"> Genre: {{ artist.genres }} | Followers: {{ artist.followers }} |  Popularity: {{ artist.popularity }}</span><br>
+                            <span class="meta"> Genre: {{ artist.genres | join(', ')}} | Followers: {{ artist.followers }} |  Popularity: {{ artist.popularity }}</span><br>
                         </div>
                     </li>
                 {% endfor %}

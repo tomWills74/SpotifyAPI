@@ -16,3 +16,6 @@ Thumbs.db
 .cache
 .cache-*
 
+# dataset
+listening_habits.csv
+

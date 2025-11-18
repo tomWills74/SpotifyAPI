@@ -52,17 +52,16 @@ def top_tracks(sp, time_range='long_term', limit=10):
         })
     return tracks
 
-def top_artists(sp, time_range='short_term', limit=10):
+def top_artists(sp, time_range='medium_term', limit=10):
     top = sp.current_user_top_artists(time_range=time_range, limit=limit)
     artists = []
     for item in top['items']:
-        url = item['images'][2]['url'] if item['images'] else None
         artists.append({
             'name': item['name'],
-            'genres': ', '.join(item['genres']),
+            'genres': item['genres'],
             'popularity': item['popularity'],
             'followers': item['followers']['total'],
-            'url': url
+            'url': item['images'][2]['url'] if item['images'] else None
         })
     return artists
 
