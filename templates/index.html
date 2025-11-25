@@ -20,7 +20,10 @@
                 <img src="{{ profile_image_url }}" alt="user-avatar" class="user-avatar">
                 <p>Welcome <B>{{ display_name }}</B> to your Spotify Dashboard</p>
             </div>
-
+            <div class="recommendation">
+                <h3>Recommended Grenre</h3>
+                <p>Based on the time of day, I recomend you to play some <strong>{{ recommended_genre }}</strong> music!</p>
+            </div>
             <div class="summary">
                 <div class="stat">Total Tracks Played: {{ total_tracks }}</div>
                 <div class="stat">Top Genre: {{ top_genre }}</div>

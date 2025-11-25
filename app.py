@@ -12,10 +12,11 @@ from spotifyAnalysis import (
     get_usr_profile, 
     get_spotify_client
     )
-
+from spotify_audio_features import train_model, predict_genre
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
+model, le = train_model()
 @app.route("/callback")
 def callback():
     auth_manager = SpotifyOAuth(
@@ -26,8 +27,6 @@ def callback():
     )
     auth_manager.get_access_token(request.args.get("code"))
     return redirect("/")
-
-
 
 @app.route("/")
 def home():
@@ -42,7 +41,19 @@ def home():
         scope="user-top-read user-read-recently-played user-read-private"
         )
         return redirect(auth_manager.get_authorize_url())
-
+    
+    now = datetime.now()
+    hour = now.hour
+    day_of_week = now.weekday()
+    is_weekend = int(day_of_week >=5)
+    is_workday = int(day_of_week < 5)
+    recommended_genre = predict_genre(
+        model, le,
+        hour=hour,
+        day_of_week=day_of_week,
+        is_weekend=is_weekend,
+        is_workday=is_workday
+    )
     user_profile = get_usr_profile(access_token)
     display_name = user_profile.get('display_name', 'User')
     images = user_profile.get('images', [])
@@ -92,6 +103,7 @@ def home():
                                 top_artist_url=top_artist_url,
                                 top_artist_name=top_artist_name,
                                 top_artist_genre=top_artist_genre,
+                                recommended_genre=recommended_genre
                            )
 
 

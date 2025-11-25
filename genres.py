@@ -1,7 +1,7 @@
 manual_genre_map = {
     # UK Indie/Rock Bands
     'Pentire': 'indie',
-    'M60': 'indie',  # Changed from bassline - they're indie/bassline
+    'M60': 'indie',
     'Wunderhorse': 'indie',
     'Sam Fender': 'indie',
     'The Lathums': 'indie',
@@ -22,7 +22,7 @@ manual_genre_map = {
     'Djo': 'indie',
     'Louis Dunford': 'indie',
     'The Royston Club': 'indie',
-    
+
     # Welsh Language Artists
     'Bwncath': 'welsh_indie',
     'Gwilym': 'welsh_indie',
@@ -37,15 +37,15 @@ manual_genre_map = {
     'Yws Gwynedd': 'welsh_indie',
     'Bryn Fôn': 'welsh_folk',
     'Sŵnami': 'welsh_indie',
-    
-    # Other Artists
+
+    # Other / International Artists
     'Hozier': 'indie',
-    'Ren': 'alternative',
+    'Ren': 'alt_pop',
     'Evan Honer': 'indie',
     'Julia DiGrazia': 'indie',
-    'Eden Nash': 'alternative',
+    'Eden Nash': 'alt_pop',
     'Kingfishr': 'indie',
-    'Twenty One Pilots': 'alternative',
+    'Twenty One Pilots': 'alt_pop',
     'Benson Boone': 'pop',
     'Malcolm Todd': 'indie',
     'INOHA': 'indie',
@@ -53,49 +53,70 @@ manual_genre_map = {
     'Elton John': 'classic_rock',
     'FINNEAS': 'pop',
     'Paolo Nutini': 'indie',
-    'Gorillaz': 'alternative',
+    'Gorillaz': 'alt_pop',
     'Dominic Fike': 'indie',
     'Cameron Winter': 'indie',
     'Somebody\'s Child': 'indie',
     'Neutral Milk Hotel': 'indie',
+
+    # Holiday / Seasonal
+    'Mariah Carey': 'holiday',
+    'Wham!': 'holiday',
+    'Michael Bublé': 'holiday',
+    'Kelly Clarkson': 'holiday',
+    'Andy Williams': 'holiday',
+    'Dean Martin': 'holiday',
+    'Brenda Lee': 'holiday',
+    'The Ronettes': 'holiday',
+    'Darlene Love': 'holiday',
+    'Sia': 'holiday',
+    'Ariana Grande': 'holiday',
+    'The Pogues': 'holiday',
+    'Laufey': 'holiday',
 }
 
 genre_groups = {
-    # Indie/Rock family (your main music)
+    # Indie/Rock family
     'indie': 'indie_rock',
     'post-punk': 'indie_rock',
     'britpop': 'indie_rock',
     'alternative rock': 'indie_rock',
     'midwest emo': 'indie_rock',
-    'alternative': 'indie_rock',
     'indie folk': 'indie_rock',
     'art rock': 'indie_rock',
     'anti-folk': 'indie_rock',
     'post-rock': 'indie_rock',
     'neo-psychedelic': 'indie_rock',
     'proto-punk': 'indie_rock',
-    
+
+    # Alt/Experimental
+    'alt_pop': 'alt_pop',
+
     # Electronic/Dance
+    'electronic': 'electronic',
     'drum and bass': 'electronic',
     'tech house': 'electronic',
     'grime': 'electronic',
     'uk garage': 'electronic',
-    
+
     # Welsh Music
     'welsh_indie': 'welsh',
     'welsh_folk': 'welsh',
     'traditional folk': 'welsh',
-    'classical': 'welsh',  # All classical music in the dataset is currently Welsh (can be changed if my music taste goes there eventually)
-    
+    'classical': 'welsh',
+
     # Pop/Soul
+    'pop': 'pop',
     'pop soul': 'pop',
     'bedroom pop': 'pop',
-    'pop': 'pop',
-    
+
     # Retro/Other
-    'doo-wop': 'retro',
-    'classic rock': 'retro',
-    'folk': 'folk',
-    'blues': 'blues',
-    'soundtrack': 'other',
+    'classic_rock': 'classic_rock',
+    'doo-wop': 'retro/other',
+    'folk': 'retro/other',
+    'blues': 'retro/other',
+    'soundtrack': 'retro/other',
+
+    # Holiday
+    'holiday': 'holiday',
 }
